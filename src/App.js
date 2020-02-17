@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import MasonryFlex from './MasonryFlex';
+import MasonryReact from './MasonryReact';
+//https://w3bits.com/flexbox-masonry/ 참고
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MasonryReact
+        columns={3}
+        gap={25}
+      >
+        {
+          [...Array(12).keys()].map((key,index)=>{
+            const height=200+Math.ceil(Math.random()*300);
+            return (
+              <div style={{
+                height:`${height}px`,
+                border:'1px solid black'
+              }}>
+                <span>{index}</span>
+              </div>
+            )
+          })
+        }
+      </MasonryReact>
     </div>
   );
 }
